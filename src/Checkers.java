@@ -75,42 +75,4 @@ public class Checkers {
         return 0;
     }
 
-    int count;
-
-    public int solution2(String[] B) {
-        count = 0;
-
-        return count;
-    }
-
-
-    public void calculate(String[] B) {
-
-        List<Integer> index = new ArrayList<>();
-        int indexO = 0;
-        for (int i = 0; i < B.length; i++) {
-            String strO = B[i];
-            if (strO.contains("O")) {
-                if (i - 1 < 0 || i + 1 > B.length - 1) return;
-                int indexStr = strO.indexOf("O");
-                B[i] = strO.replace("O", ".");
-                index.add(indexStr - 1);
-                index.add(indexStr + 1);
-                indexO = i;
-            }
-        }
-
-
-        for (int i = indexO + 1; i < B.length; i++) {
-            String strX = B[i];
-//            int indexXFirst = indexStrO + 1;
-//            int indexXSecond = indexStrO - 1;
-//            if (strX.substring(indexXFirst).equals("X")) {
-
-
-        }
-
-    }
-
-
 }
