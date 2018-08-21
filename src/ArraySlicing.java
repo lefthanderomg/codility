@@ -1,58 +1,52 @@
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class ArraySlicing {
 
-    private int count;
+    int count = 0;
+    List<Integer> list;
 
-    ArraySlicing() {
-        this.count = 0;
-    }
+    public int solution(int[] A) {
+        count = 0;
+        list = new ArrayList<>();
+        if (A.length == 2) return 2;
+        canSplit(A, A.length);
 
-    int solution(int[] A) {
-        canSplit(A);
         return count;
     }
 
-    private void canSplit(int[] A) {
-        count++;
+
+    public void canSplit(int[] items, int indexStart) {
+
+        boolean canSplit = true;
         boolean isSorted = true;
         int max = 0;
-        int min = 1;
-        int indexMin = 0;
         int indexMax = 0;
-
-        for (int i = 0; i <= A.length - 1; i++) {
-
-            if (max < A[i]) {
-                max = A[i];
+        int previous = items[0];
+        for (int i = 0; i < indexStart; i++) {
+            if (max < items[i]) {
+                max = items[i];
                 indexMax = i;
             }
-            if (min > A[i]) {
-                min = A[i];
-                indexMin = i;
+            if (isSorted) {
+                if (previous > items[i]) isSorted = false;
+                previous = items[i];
             }
-            if (i + 1 < A.length) {
-                if (A[i] > A[i + 1]) {
-                    isSorted = false;
-                }
+        }
+        if (isSorted) {
+            count += indexStart;
+            return;
+        }
+        if (indexMax == 0) canSplit = false;
+        for (int i = 0; i < indexMax; i++) {
+            for (int j = indexMax + 1; j < items.length; j++) {
+                if (items[j] < items[i]) canSplit = false;
             }
         }
 
-        if (isSorted) return;
-        if (indexMin > indexMax) return;
-        if (indexMax == 0) return;
-        if (indexMax + 1 != A.length && A.length != 2) {
-            for (int i = 0; i < indexMax; i++) {
-                for (int j = indexMax + 1; j < A.length; j++) {
-                    if (A[j] < A[i]) {
-                        return;
-                    }
-                }
-
-            }
+        count++;
+        if (canSplit) {
+            canSplit(items, indexMax);
         }
-
-        canSplit(Arrays.copyOfRange(A, 0, indexMax));
     }
-
 }
