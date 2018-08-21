@@ -17,11 +17,12 @@ class ArraySlicing {
         count++;
         boolean isSorted = true;
         int max = 0;
-        int min = 0;
+        int min = 1;
         int indexMin = 0;
         int indexMax = 0;
 
-        for (int i = 0; i < A.length - 1; i++) {
+        for (int i = 0; i <= A.length - 1; i++) {
+
             if (max < A[i]) {
                 max = A[i];
                 indexMax = i;
@@ -30,10 +31,13 @@ class ArraySlicing {
                 min = A[i];
                 indexMin = i;
             }
-            if (A[i] > A[i + 1]) {
-                isSorted = false;
+            if (i + 1 < A.length) {
+                if (A[i] > A[i + 1]) {
+                    isSorted = false;
+                }
             }
         }
+
         if (isSorted) return;
         if (indexMin > indexMax) return;
         if (indexMax == 0) return;

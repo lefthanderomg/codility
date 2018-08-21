@@ -1,8 +1,8 @@
 public class Main {
 
     public static void main(String[] args) {
-        testCheckers();
-//        testArraySlicing();
+//        testCheckers();
+        testArraySlicing();
     }
 
     private static void testCheckers() {
@@ -41,13 +41,13 @@ public class Main {
     private static void testArraySlicing() {
 //        int[] A = {2, 1, 6, 4, 3, 7};
         //3
-        int[] A = {2, 4, 1, 6, 5, 9, 7};
+//        int[] A = {2, 4, 1, 6, 5, 9, 7};
         //3
 //        int[] A = {4, 3, 2, 6, 1};
         //1
 //        int[] A = {7, 2, 4, 6, 5, 9, 7, 1};
 
-//        int[] A = {1,3};
+        int[] A = {1,3};
 
         ArraySlicing arraySlicing = new ArraySlicing();
         System.out.println(arraySlicing.solution(A));
