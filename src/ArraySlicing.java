@@ -1,14 +1,12 @@
-import java.util.*;
-import java.util.stream.Collectors;
+
 
 class ArraySlicing {
 
-    int count = 0;
-    List<Integer> list;
+    private int count = 0;
+
 
     public int solution(int[] A) {
         count = 0;
-        list = new ArrayList<>();
         if (A.length == 2) return 2;
         canSplit(A, A.length);
 
