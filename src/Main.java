@@ -41,16 +41,17 @@ public class Main {
     private static void testArraySlicing() {
 //        int[] A = {2, 1, 6, 4, 3, 7};
         //3
-//        int[] A = {2, 4, 1, 6, 5, 9, 7};
+        int[] A = {2, 4, 1, 6, 5, 9, 7};
         //3
-        int[] A = {4, 3, 2, 6, 1};
+//        int[] A = {4, 3, 2, 6, 1};
         //1
 //        int[] A = {10, 100, 100_000, 1000, 100_00, 1000000, 10000000, 100000000, 1000000000};
 
 //        int[] A = {1, 2, 10, 3, 9, 12, 13};
 
-
-//        int[] A = {3,1};
+//
+//        int[] A = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//        int[] A = {10, 4, 3, 2, 8};
 
         ArraySlicing arraySlicing = new ArraySlicing();
         System.out.println(arraySlicing.solution(A));

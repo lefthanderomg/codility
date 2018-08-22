@@ -1,50 +1,21 @@
-
+import java.util.Stack;
 
 class ArraySlicing {
 
-    private int count = 0;
-
 
     public int solution(int[] A) {
-        count = 0;
-        if (A.length == 2) return 2;
-        canSplit(A, A.length);
-
-        return count;
+        Stack<Integer> stackArray = new Stack<>();
+        stackArray.push(A[0]);
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] >= stackArray.peek()) stackArray.push(A[i]);
+            else {
+                int last = stackArray.pop();
+                while (stackArray.size() > 0 && A[i] < stackArray.peek()) stackArray.pop();
+                stackArray.push(last);
+            }
+        }
+        return stackArray.size();
     }
 
 
-    public void canSplit(int[] items, int indexStart) {
-
-        boolean canSplit = true;
-        boolean isSorted = true;
-        int max = 0;
-        int indexMax = 0;
-        int previous = items[0];
-        for (int i = 0; i < indexStart; i++) {
-            if (max < items[i]) {
-                max = items[i];
-                indexMax = i;
-            }
-            if (isSorted) {
-                if (previous > items[i]) isSorted = false;
-                previous = items[i];
-            }
-        }
-        if (isSorted) {
-            count += indexStart;
-            return;
-        }
-        if (indexMax == 0) canSplit = false;
-        for (int i = 0; i < indexMax; i++) {
-            for (int j = indexMax + 1; j < items.length; j++) {
-                if (items[j] < items[i]) canSplit = false;
-            }
-        }
-
-        count++;
-        if (canSplit) {
-            canSplit(items, indexMax);
-        }
-    }
 }
